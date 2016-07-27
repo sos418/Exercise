@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+var myLatLng;
+var map;
+var marker;
+
+
+function initMap() {
+  myLatLng = {lat: 25.805840, lng: 123.575638};
+
+  var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">詳細資料</h1>'+
+      '<div id="bodyContent">'+
+      '<img src="http://i.imgur.com/NtXhYFb.jpg">'+
+      '<p><b>魚鉤</b>, 撿獲時間:2014/04/24,損害程度:嚴重,' +
+      '顏色:黑色,網目長度:2 fingers,麻繩寬度:0.5mm,無法處理,無生物殘繞,'+
+      '備註:無</p>' +
+      '</div>'+
+      '</div>';
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 6,
+    center: myLatLng
+  });
+  var image = 'http://miupix.cc/dm/5UB94N/RTTY.png';
+  marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+  });
+  var m = new google.maps.Marker({
+    position: a,
+    map: map,
+    icon: image
+  });
+    var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+    m.addListener('click', function() {
+    infowindow.open(map, m);
+  });
+
+
+
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpMLi_nh3a1gkLvzlc0ub6vqT1T1BaeKo&signed_in=true&callback=initMap"></script>
+  </body>
+</html>
