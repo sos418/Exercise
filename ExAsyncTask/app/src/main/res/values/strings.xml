@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ExAsyncTask</string>
+    <string name="btn1">測試一</string>
+    <string name="btn2">測試二</string>
+    <string name="btn3">測試三</string>
+    <string name="btn4">下載一</string>
+    <string name="btn5">下載二</string>
+</resources>
