@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var readimage = function () {
+                var imgFile = document.getElementById('myfile');
+                if (imgFile.files && imgFile.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        var datauri = event.target.result;
+                        img = document.createElement('img');
+                        img.src = datauri;
+                        var srccanvas = document.getElementById('srccanvas');
+                        var w = img.width;
+                        var h = img.height;
+                        srccanvas.width = w;
+                        srccanvas.height = h;
+                        var srcctx = srccanvas.getContext('2d');
+                        srcctx.drawImage(img, 0, 0);
+                    }
+                    reader.readAsDataURL(imgFile.files[0]);
+                }
+            }
+            //-------紅色按鈕---------------------
+        var red = function () {
+                var srccanvas = document.getElementById('srccanvas');
+                var destcanvas = document.getElementById('destcanvas');
+                //---------------------------
+                var w = srccanvas.width;
+                var h = srccanvas.height;
+                var srcctx = srccanvas.getContext('2d');
+                destcanvas.width = w;
+                destcanvas.height = h;
+                var srcdata = srcctx.getImageData(0, 0, w, h).data;
+                var destctx = destcanvas.getContext('2d');
+                destctx.fillStyle = '#ffffff';
+                destctx.fillRect(0, 0, w, h);
+                destctx.stroke();
+                var destdata = destctx.getImageData(0, 0, w, h);
+                var d = destdata.data;
+                //---------------------------
+                var r, g, b, a, gray;
+                //---------------------------
+                for (var i = 0; i < srcdata.length; i += 4) {
+                    r = srcdata[i];
+                    g = srcdata[i + 1];
+                    b = srcdata[i + 2];
+                    a = srcdata[i + 3];
+                    d[i] = 255;
+                    d[i + 1] = 0;
+                    d[i + 2] = 0;
+                    d[i + 3] = a;
+                }
+                //----------------------------------
+                destctx.putImageData(destdata, 0, 0);
+            }
+            //------黑色按鈕------------------------------
+        var black = function () {
+                var srccanvas = document.getElementById('srccanvas');
+                var destcanvas = document.getElementById('destcanvas');
+                //---------------------------
+                var w = srccanvas.width;
+                var h = srccanvas.height;
+                var srcctx = srccanvas.getContext('2d');
+                destcanvas.width = w;
+                destcanvas.height = h;
+                var srcdata = srcctx.getImageData(0, 0, w, h).data;
+                var destctx = destcanvas.getContext('2d');
+                destctx.fillStyle = '#ffffff';
+                destctx.fillRect(0, 0, w, h);
+                destctx.stroke();
+                var destdata = destctx.getImageData(0, 0, w, h);
+                var d = destdata.data;
+                //---------------------------
+                var r, g, b, a, gray;
+                //---------------------------
+                for (var i = 0; i < srcdata.length; i += 4) {
+                    r = srcdata[i];
+                    g = srcdata[i + 1];
+                    b = srcdata[i + 2];
+                    a = srcdata[i + 3];
+                    d[i] = 0;
+                    d[i + 1] = 0;
+                    d[i + 2] = 0;
+                    d[i + 3] = a;
+                }
+                //----------------------------------
+                destctx.putImageData(destdata, 0, 0);
+            }
+            //-------綠色按鈕---------------------
+        var green = function () {
+                var srccanvas = document.getElementById('srccanvas');
+                var destcanvas = document.getElementById('destcanvas');
+                //---------------------------
+                var w = srccanvas.width;
+                var h = srccanvas.height;
+                var srcctx = srccanvas.getContext('2d');
+                destcanvas.width = w;
+                destcanvas.height = h;
+                var srcdata = srcctx.getImageData(0, 0, w, h).data;
+                var destctx = destcanvas.getContext('2d');
+                destctx.fillStyle = '#ffffff';
+                destctx.fillRect(0, 0, w, h);
+                destctx.stroke();
+                var destdata = destctx.getImageData(0, 0, w, h);
+                var d = destdata.data;
+                //---------------------------
+                var r, g, b, a, gray;
+                //---------------------------
+                for (var i = 0; i < srcdata.length; i += 4) {
+                    r = srcdata[i];
+                    g = srcdata[i + 1];
+                    b = srcdata[i + 2];
+                    a = srcdata[i + 3];
+                    d[i] = 0;
+                    d[i + 1] = 255;
+                    d[i + 2] = 0;
+                    d[i + 3] = a;
+                }
+                //----------------------------------
+                destctx.putImageData(destdata, 0, 0);
+            }
+            //---------黃色按鈕-------------------
+        var yellow = function () {
+                var srccanvas = document.getElementById('srccanvas');
+                var destcanvas = document.getElementById('destcanvas');
+                //---------------------------
+                var w = srccanvas.width;
+                var h = srccanvas.height;
+                var srcctx = srccanvas.getContext('2d');
+                destcanvas.width = w;
+                destcanvas.height = h;
+                var srcdata = srcctx.getImageData(0, 0, w, h).data;
+                var destctx = destcanvas.getContext('2d');
+                destctx.fillStyle = '#ffffff';
+                destctx.fillRect(0, 0, w, h);
+                destctx.stroke();
+                var destdata = destctx.getImageData(0, 0, w, h);
+                var d = destdata.data;
+                //---------------------------
+                var r, g, b, a, gray;
+                //---------------------------
+                for (var i = 0; i < srcdata.length; i += 4) {
+                    r = srcdata[i];
+                    g = srcdata[i + 1];
+                    b = srcdata[i + 2];
+                    a = srcdata[i + 3];
+                    d[i] = 255;
+                    d[i + 1] = 255;
+                    d[i + 2] = 0;
+                    d[i + 3] = a;
+                }
+                //----------------------------------
+                destctx.putImageData(destdata, 0, 0);
+            }
+            //--------藍色按鈕-------------------------------
+        var blue = function () {
+            var srccanvas = document.getElementById('srccanvas');
+            var destcanvas = document.getElementById('destcanvas');
+            //---------------------------
+            var w = srccanvas.width;
+            var h = srccanvas.height;
+            var srcctx = srccanvas.getContext('2d');
+            destcanvas.width = w;
+            destcanvas.height = h;
+            var srcdata = srcctx.getImageData(0, 0, w, h).data;
+            var destctx = destcanvas.getContext('2d');
+            destctx.fillStyle = '#ffffff';
+            destctx.fillRect(0, 0, w, h);
+            destctx.stroke();
+            var destdata = destctx.getImageData(0, 0, w, h);
+            var d = destdata.data;
+            //---------------------------
+            var r, g, b, a, gray;
+            //---------------------------
+            for (var i = 0; i < srcdata.length; i += 4) {
+                r = srcdata[i];
+                g = srcdata[i + 1];
+                b = srcdata[i + 2];
+                a = srcdata[i + 3];
+                d[i] = 0;
+                d[i + 1] = 0;
+                d[i + 2] = 255;
+                d[i + 3] = a;
+            }
+            //----------------------------------
+            destctx.putImageData(destdata, 0, 0);
+        }
+    </script>
+</head>
+
+<body>
+    <input type='file' id='myfile' onchange="readimage();">
+    <hr>
+    <input type='button' value='紅色' onclick="red();">
+    <input type='button' value='黑色' onclick="black();">
+    <input type='button' value='綠色' onclick="green();">
+    <input type='button' value='黃色' onclick="yellow();">
+    <input type='button' value='藍色' onclick="blue();">
+    <br>
+    <canvas id='srccanvas' width='100' height="100" style="border:1px solid #aaaaaa;"></canvas>
+    <canvas id='destcanvas' width='100' height="100" style="border:1px solid #aaaaaa;"></canvas>
+</body>
+
+</html>
